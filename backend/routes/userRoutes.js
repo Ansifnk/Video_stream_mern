@@ -1,7 +1,7 @@
 let express = require('express');
 const User = require('../modals/UserModal');
 const bcryptjs = require('bcryptjs');
-
+const { generateAccesToken } = require('../middlewares/auth');
 let router = express.Router();
 
 
