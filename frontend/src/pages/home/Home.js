@@ -13,7 +13,7 @@ const Home = () => {
     const getAllVideos = async () => {
         const response = await axios.get(BASE_URL + 'video/get_all')
         if (response.status == 200) {
-            // console.log(response.data)
+            console.log(response.data)
             setVideos(response.data)
         }
     }
@@ -23,14 +23,12 @@ const Home = () => {
     }, [])
 
     return (
-        <div className='h-full' >
-            <NavBar />
+        <div className='flex flex-wrap' >
 
-            <div className='flex flex-wrap' >
-                {
-                    videos.map(vid => <VideoItem video={vid} />)
-                }
-            </div>
+
+            {
+                videos.map(vid => <VideoItem video={vid} />)
+            }
 
         </div>
     )

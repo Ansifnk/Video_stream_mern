@@ -11,6 +11,10 @@ const videoSchema = mongoose.Schema({
         required: true,
 
     },
+    video_url: {
+        type: String,
+        required: true,
+    },
     upload_date: {
         type: Date,
         required: true,
