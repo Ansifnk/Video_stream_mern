@@ -1,6 +1,43 @@
 const mongoose = require("mongoose");
 
 
+const replySchema = mongoose.Schema({
+    user_name: {
+        type: String,
+        required: true,
+    },
+    reply: {
+        type: String,
+        required: true,
+    },
+    created_date: {
+        type: Date,
+        required: true,
+        default: new Date()
+    },
+})
+
+const commentSchema = mongoose.Schema({
+    user_name: {
+        type: String,
+        required: true,
+    },
+    comment: {
+        type: String,
+        required: true,
+    },
+    created_date: {
+        type: Date,
+        required: true,
+        default: new Date()
+    },
+
+    replies: {
+        type: [replySchema],
+        required: false
+    }
+})
+
 const videoSchema = mongoose.Schema({
     name: {
         type: String,
@@ -32,8 +69,11 @@ const videoSchema = mongoose.Schema({
         required: true,
         default: 0
 
+    },
+    comments: {
+        type: [commentSchema],
+        required: false
     }
-
 
 
 })

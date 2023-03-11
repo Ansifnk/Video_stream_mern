@@ -97,4 +97,40 @@ router.post('/views', async (req, res) => {
 })
 
 
+router.post('/comment', async (req, res) => {
+    const { _id, comment } = req.body ?? {}
+    if (!_id) return res.sendStatus(401)
+
+    const newComment = {
+        user_name: 'user_1',
+        comment
+    }
+
+    try {
+        let video = await Video.findByIdAndUpdate(_id, { $push: { comments: newComment } }, { new: true })
+
+        res.status(200)
+            .send(video.comments)
+    } catch (error) {
+        console.log(error)
+    }
+
+})
+
+router.get('/comments/:id', async (req, res) => {
+    const { id, comment } = req.params ?? {}
+    if (!id) return res.sendStatus(401)
+
+    try {
+        let video = await Video.findById(id)
+
+        res.status(200)
+            .send(video.comments)
+    } catch (error) {
+        console.log(error)
+    }   
+
+})
+
+
 module.exports = router
