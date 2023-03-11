@@ -9,10 +9,9 @@ const cookieParser = require("cookie-parser");
 require('dotenv').config()
 
 const userRoutes = require('./routes/userRoutes');
+const videoRoutes = require('./routes/videoRoutes');
 
 const startServer = async () => {
-
-
 
     const app = express();
 
@@ -51,22 +50,23 @@ const startServer = async () => {
     app.use(express.json());
     app.use(cookieParser());
 
-    auth.authenticateToken.unless = unless;
+    // auth.authenticateToken.unless = unless;
 
-    app.use(
-        auth.authenticateToken.unless({
-            path: [
-                { url: '/user/create', methods: ["POST"] },
-                { url: '/user/login', methods: ["POST"] },
-                { url: '/user/logout', methods: ["GET"] },
+    // app.use(
+    //     auth.authenticateToken.unless({
+    //         path: [
+    //             { url: '/user/create', methods: ["POST"] },
+    //             { url: '/user/login', methods: ["POST"] },
+    //             { url: '/user/logout', methods: ["GET"] },
                
-            ]
-        })
-    )
+    //         ]
+    //     })
+    // )
 
 
 
     app.use('/user', userRoutes)
+    app.use('/video', videoRoutes)
 
     app.use(errorHandler)
 
