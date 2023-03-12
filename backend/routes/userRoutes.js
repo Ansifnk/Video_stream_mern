@@ -58,7 +58,7 @@ router.post('/update', async (req, res) => {
 
 
 router.get('/details', async (req, res) => {
-
+// console.log(req.userId,'userie')
 
     try {
         const query = { _id: req.userId };

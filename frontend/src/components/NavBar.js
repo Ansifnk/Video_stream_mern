@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { Notification } from 'iconsax-react'
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AppContext } from '../providers/AppProvider'
@@ -20,13 +21,21 @@ const NavBar = () => {
     }
 
     return (
-        <div className='flex p-3 items-center justify-between bg-bg ' >
+        <div className='flex p-3 items-center  bg-bg ' >
             <h1
                 onClick={() => navigate('/')}
                 className='text-white font-bold cursor-pointer'
             >
                 Video App
             </h1>
+            <view className='flex-1' />
+            <Notification
+                variant='Bold'
+                color='white'
+                size={20}
+                className='mr-5 cursor-pointer'
+                onClick={() => navigate('/notifications')}
+            />
             <p
                 onClick={signInHandler}
                 className='text-white cursor-pointer'

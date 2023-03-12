@@ -1,10 +1,11 @@
 import axios from 'axios'
-import React from 'react'
+import React, { useContext } from 'react'
 import { BASE_URL } from '../../../utils/constants'
 import { Eye, Like1, Send2, } from 'iconsax-react'
+import { AppContext } from '../../../providers/AppProvider'
 
 const InteractionBar = ({ setVideo, video, }) => {
-
+    const { userData, setShowSignInModal } = useContext(AppContext)
     const shareHandler = () => {
         let url = window.location.href
         navigator.clipboard.writeText(`${url}`)
@@ -12,8 +13,11 @@ const InteractionBar = ({ setVideo, video, }) => {
     }
 
     const updateLike = async () => {
+
+        if (!userData?._id) return setShowSignInModal(true)
+
         try {
-            let response = await axios.post(BASE_URL + 'video/like', { _id: video._id })
+            let response = await axios.post(BASE_URL + 'video/like', { _id: video._id, userId: userData?._id, userName: userData?.name })
             if (response.status == 200) {
                 // console.log(response.data)
                 alert('Liked')

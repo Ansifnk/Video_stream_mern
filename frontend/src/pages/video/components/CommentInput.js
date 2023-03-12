@@ -1,16 +1,23 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { BASE_URL } from '../../../utils/constants'
 import axios from 'axios'
+import { AppContext } from '../../../providers/AppProvider'
 
 
 const CommentInput = ({ videoId, setComments }) => {
+
+    const { userData, setShowSignInModal } = useContext(AppContext)
+
     const [commentTxt, setCommentTxt] = useState('')
 
     const postComment = async (e) => {
         e.preventDefault()
+
+        if (!userData?._id) return setShowSignInModal(true)
+
         try {
             const res = await axios.post(BASE_URL + 'video/comment', {
-                _id: videoId, comment: commentTxt
+                _id: videoId, comment: commentTxt, userId: userData?._id, userName: userData?.name
             })
             if (res.status == 200) {
                 setComments(res.data)
