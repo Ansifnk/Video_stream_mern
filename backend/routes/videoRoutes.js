@@ -7,9 +7,9 @@ let router = express.Router();
 router.post('/create', async (req, res) => {
 
     let newVid = {
-        name: 'new Video',
-        thumbnail: 'https://cdn.pixabay.com/photo/2013/04/11/19/46/building-102840_960_720.jpg',
-        video_url: 'https://www.youtube.com/watch?v=qALsVa-V9qo'
+        name: 'Chat GPT',
+        thumbnail: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/800px-ChatGPT_logo.svg.png',
+        video_url: 'https://www.youtube.com/watch?v=PPmGYE38o50&t=346s'
     };
 
 

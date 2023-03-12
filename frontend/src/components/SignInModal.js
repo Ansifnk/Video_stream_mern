@@ -56,7 +56,7 @@ const SignInModal = () => {
                         <label className="text-gray-800 text-sm font-bold leading-tight tracking-normal">email</label>
                         <input value={email} onChange={(e) => setEmail(e.target.value)} id="name" className="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" placeholder="email" />
                         <label className="text-gray-800 text-sm font-bold leading-tight tracking-normal">password</label>
-                        <input value={password} onChange={(e) => setPassword(e.target.value)} id="name" className="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" placeholder="password" />
+                        <input type='password' value={password} onChange={(e) => setPassword(e.target.value)} id="name" className="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border" placeholder="password" />
 
 
                         <div className="flex items-center justify-start w-full">
